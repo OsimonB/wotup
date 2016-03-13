@@ -1,0 +1,13 @@
+<div layout="column" layout-fill ng-cloak>
+    <md-content layout="column" flex>
+        <md-content layout="column" flex scroll-glue>
+            <md-list layout="column" class="chat-window">
+                <chat-message ng-repeat="msg in messages" ng-click="selectedUser = msg.user.username" message="msg" selected="selectedUser"></chat-message>
+            </md-list>
+        </md-content>
+        <md-divider></md-divider>
+        <md-input-container layout="row" id="wu-input-box">
+            <input class="md-accent" type="text" placeholder="Message" id="wu-input" ng-model="message" ng-keypress="_ctrl.keyPress($event)" />
+        </md-input-container>
+    </md-content>
+</div>

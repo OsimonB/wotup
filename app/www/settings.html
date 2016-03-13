@@ -1,0 +1,33 @@
+<div layout="row" layout-fill ng-cloak>
+    <div layout="column" id="wu-settings-sidebar" class="md-whiteframe-z2">
+        <md-list flex>
+            <md-list-item class="md-2-line md-accent" 
+                    ng-click="_ctrl.selectModule(key, module);"
+                    ng-repeat="(key, module) in _ctrl.modules"
+                    ng-class="{'selected': _ctrl.selected == module}">
+                <md-icon md-font-icon="{{module.icon}}" class="md-avatar-icon fa wu-settings-icon" alt="{{module.name}}"></md-icon>
+                <div class="md-list-item-text" layout="column">
+                    <h3>{{ module.name }}</h3>
+                    <p>{{ module.description }}</p>
+                </div>            
+            </md-list-item>
+        </md-list>
+    </div>
+    <div layout="column" id="wu-settings-pane" class="layout-padding" flex>
+        <h1>{{_ctrl.selected.name}}</h1>
+        <md-divider></md-divider>
+        <div layout="column" id="wu-settings-list">
+            <md-input-container ng-repeat="(name, setting) in _ctrl.selected.settings" layout="row" flex>
+                <md-tooltip>{{setting.description}}</md-tooltip>
+                <h4>{{setting.name}}</h4>
+                <input type="{{setting.type}}" ng-model="values[name]" aria-label="{{setting.name}}" flex />
+            </md-input-container>
+        </div>
+        <md-divider></md-divider>
+        <div layout="row" id="wu-settings-footer">
+            <p flex></p>
+            <md-button ng-click="_ctrl.save()" class="md-raised md-primary" ng-disable="_ctrl.isDirty()" aria-label="Save">Save</md-button>
+            <md-button ng-click="_ctrl.cancel()" class="md-raised md-primary" aria-label="Cancel">Cancel</md-button>
+        </div>
+    </div>
+</div>
