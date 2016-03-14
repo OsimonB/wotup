@@ -1,5 +1,30 @@
 {
     "version": "0.1.0",
-    "command": "node_modules\\electron-prebuilt\\dist\\electron.exe",
-    "args": ["--debug=5858", "app"]
+    "command": "gulp",
+    "isShellCommand": true,
+    "args": [
+        "--no-color"
+    ],
+    "tasks": [
+        {
+            "taskName": "run",
+            "args": [],
+            "isBuildCommand": true
+        },
+        {
+            "taskName": "clean",
+            "args": [],
+            "isBuildCommand": false
+        },
+        {
+            "taskName": "build",
+            "args": [],
+            "isBuildCommand": false
+        },
+        {
+            "taskName": "build-electron",
+            "args": [],
+            "isBuildCommand": false
+        }
+    ]
 }

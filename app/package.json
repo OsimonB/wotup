@@ -1,24 +1,24 @@
 {
-  "name": "wotup",
-  "version": "0.0.1",
-  "description": "A custom interface for the Twitch.tv chat service",
-  "main": "main.js",
-  "scripts": {
-    "start": "electron main.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/OsimonB/twitch-chat-wotup.git"
-  },
-  "keywords": [],
-  "author": "OsimonB",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/OsimonB/twitch-chat-wotup/issues"
-  },
-  "homepage": "https://github.com/OsimonB/twitch-chat-wotup",
-  "devDependencies": {
-    "electron-prebuilt": "^0.36.0",
-    "tmi.js": "^0.0.28"
-  }
+    "name": "wotup",
+    "version": "0.2.0",
+    "description": "A custom interface for the Twitch.tv chat service",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron main.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/OsimonB/wotup.git"
+    },
+    "keywords": [],
+    "author": "OsimonB",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/OsimonB/wotup/issues"
+    },
+    "homepage": "https://github.com/OsimonB/wotup",
+    "devDependencies": {
+        "electron-prebuilt": "^0.37.1",
+        "tmi.js": "^0.0.28"
+    }
 }
