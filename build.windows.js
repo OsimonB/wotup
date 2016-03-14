@@ -15,7 +15,7 @@ function init() {
     // Build directory is our destination where the final build will be placed
     buildDir = projectDir.dir('./dist', { empty: true });
     // angular application directory
-    appDir = projectDir.dir('./app');
+    appDir = projectDir.dir('./build');
     // angular application's package.json file
     manifest = appDir.read('./package.json', 'json');
     return Q();

@@ -24,7 +24,7 @@ gulp.task('clean', function(callback) {
     return destDir.dirAsync('.', { empty: true });
 });
 
-gulp.task('copy', ['clean'], function() {
+gulp.task('copy', ['copy-font'], function() {
     return projectDir.copyAsync('app', destDir.path(), {
         overwrite: true,
         matching: [
@@ -35,6 +35,11 @@ gulp.task('copy', ['clean'], function() {
             'package.json'
         ]
     });
+}); 
+
+gulp.task('copy-font', ['clean'], function() {
+  return gulp.src('app/components/font-awesome/fonts/*', {base: 'app/'})
+  .pipe(gulp.dest('build/'));
 });
 
 gulp.task('build', ['copy'], function() {
@@ -50,7 +55,7 @@ gulp.task('run', function() {
     childProcess.spawn(electron, ['./app'], { stdio: 'inherit' });
 });
 
-gulp.task('build-electron', function() {
+gulp.task('package', ['build'], function() {
     switch (os.platform()) {
         case 'darwin':
             // execute build.osx.js 
