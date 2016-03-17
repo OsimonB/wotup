@@ -8,6 +8,7 @@ var gulp = require('gulp');
 var jetpack = require('fs-jetpack');
 var usemin = require('gulp-usemin');
 var uglify = require('gulp-uglify');
+var rename = require('gulp-rename');
 var os = require('os');
 var release_windows = require('./build.windows');
 
@@ -24,25 +25,27 @@ gulp.task('clean', function(callback) {
     return destDir.dirAsync('.', { empty: true });
 });
 
-gulp.task('copy', ['copy-font'], function() {
+gulp.task('copy-base', ['clean'], function() {
     return projectDir.copyAsync('app', destDir.path(), {
         overwrite: true,
         matching: [
             './node_modules/**/*',
             '*.html',
-            '*.css',
             'main.js',
             'package.json'
         ]
     });
 }); 
 
-gulp.task('copy-font', ['clean'], function() {
-  return gulp.src('app/components/font-awesome/fonts/*', {base: 'app/'})
-  .pipe(gulp.dest('build/'));
+gulp.task('copy-font-awesome', ['copy-base'], function() {
+    return gulp.src('./bower_components/font-awesome/fonts/*')
+        .pipe(rename({
+            dirname: 'fonts'
+        }))
+        .pipe(gulp.dest('build/assets'));
 });
 
-gulp.task('build', ['copy'], function() {
+gulp.task('build', ['copy-font-awesome'], function() {
     return gulp.src('./app/index.html')
         .pipe(usemin({
             js: [uglify()]

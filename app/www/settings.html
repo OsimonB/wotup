@@ -1,4 +1,4 @@
-<div layout="row" layout-fill ng-cloak>
+<div layout="row" flex layout-fill>
     <div layout="column" id="wu-settings-sidebar" class="md-whiteframe-z2">
         <md-list flex>
             <md-list-item class="md-2-line md-accent" 
@@ -13,7 +13,7 @@
             </md-list-item>
         </md-list>
     </div>
-    <div layout="column" id="wu-settings-pane" class="layout-padding" flex>
+    <div layout="column" id="wu-settings-pane" layout-padding flex>
         <h1>{{_ctrl.selected.name}}</h1>
         <md-divider></md-divider>
         <div layout="column" id="wu-settings-list">

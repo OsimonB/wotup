@@ -1,49 +1,52 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="wotup">
+<html lang="en">
   <head>
     <meta charset="UTF-8">
-    <title>Twitch Chat</title>
+    <title>Wotup?</title>
     
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
     <!-- build:css assets/css/app.css -->
-    <link rel="stylesheet" href="../bower_components/angular-material/angular-material.css" />
+    <link rel="stylesheet" href="../bower_components/angular/angular-csp.css" />
+    <link rel="stylesheet" href="../bower_components/angular-material/angular-material.min.css" />
     <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
     <!-- endbuild -->
   </head>
-  <body>
-    <div ng-controller="windowController as _ctrl" layout="column" layout-fill>
-        <div id="wu-menu" ng-class="{'visible': _ctrl.menuVisible()}"> </div>
-        <div id="wu-window-buttons">
-            <md-button class="md-raised md-primary wu-menu-button" ng-click="_ctrl.toggleMenu()" ng-class="{'open': _ctrl.menuVisible()}" aria-label="Show Menu">
-                <md-icon class="fa" md-font-icon="fa-caret-up"></md-icon>
-            </md-button>
-            <md-button class="md-raised md-primary" ng-click="_ctrl.toggleRaid()" aria-label="Raid">
-                <md-icon class="fa" md-font-icon="fa-fort-awesome"></md-icon>
-            </md-button>
-            <md-button class="md-raised md-primary" ng-click="_ctrl.showSettings()" aria-label="Settings">
-                <md-icon class="fa" md-font-icon="fa-cogs"></md-icon>
-            </md-button>
-            <md-button class="md-raised md-primary" ng-click="_ctrl.minimize()" aria-label="Minimize">
-                <md-icon class="fa" md-font-icon="fa-minus-square"></md-icon>
-            </md-button>
-            <md-button class="md-raised md-warn" ng-click="_ctrl.close()" aria-label="Close">
-                <md-icon class="fa" md-font-icon="fa-times-circle"></md-icon>
-            </md-button>
+  <body layout="column" ng-app="wotup">
+    <div id="wu-border" ng-controller="windowController as _ctrl" layout="column" ng-cloak layout-fill>
+        <div id="wu-top-bar" layout="row">
+            <div id="wu-menu" ng-class="{'visible': _ctrl.menuVisible()}"> </div>
+            <div id="wu-window-buttons">
+                <md-button class="md-raised md-primary wu-menu-button" ng-click="_ctrl.toggleMenu()" ng-class="{'open': _ctrl.menuVisible()}" aria-label="Show Menu">
+                    <md-icon class="fa" md-font-icon="fa-caret-up"></md-icon>
+                </md-button>
+                <md-button class="md-raised md-primary" ng-click="_ctrl.toggleRaid()" aria-label="Raid">
+                    <md-icon class="fa" md-font-icon="fa-fort-awesome"></md-icon>
+                </md-button>
+                <md-button class="md-raised md-primary" ng-click="_ctrl.showSettings()" aria-label="Settings">
+                    <md-icon class="fa" md-font-icon="fa-cogs"></md-icon>
+                </md-button>
+                <md-button class="md-raised md-primary" ng-click="_ctrl.minimize()" aria-label="Minimize">
+                    <md-icon class="fa" md-font-icon="fa-minus-square"></md-icon>
+                </md-button>
+                <md-button class="md-raised md-warn" ng-click="_ctrl.close()" aria-label="Close">
+                    <md-icon class="fa" md-font-icon="fa-times-circle"></md-icon>
+                </md-button>
+            </div>
+            <div id="wu-raid-list" ng-class="{'visible': _ctrl.raidVisible()}"> 
+                <md-list>
+                    <md-list-item ng-repeat="channel in _ctrl.raidList" class="md-3-line md-dense" ng-show="_ctrl.raidVisible()">
+                        <div class="md-list-item-text" layout="column">
+                            <h3>{{channel.display_name}} - {{channel.meta_game}}</h3>
+                            <h4>{{channel.title}}</h4>
+                            <p>{{channel.current_viewers}} viewers</p>
+                        </div>
+                    </md-list-item>
+                </md-list>
+            </div>
         </div>
-        <div id="wu-raid-list" ng-class="{'visible': _ctrl.raidVisible()}"> 
-            <md-list>
-                <md-list-item ng-repeat="channel in _ctrl.raidList" class="md-3-line md-dense" ng-show="_ctrl.raidVisible()">
-                    <div class="md-list-item-text" layout="column">
-                        <h3>{{channel.display_name}} - {{channel.meta_game}}</h3>
-                        <h4>{{channel.title}}</h4>
-                        <p>{{channel.current_viewers}} viewers</p>
-                    </div>
-                </md-list-item>
-            </md-list>
-        </div>
-        <div id="wu-view" ng-class="{'shrink': _ctrl.menuVisible()}">
-            <div ng-view flex layout-fill></div>
+        <div id="wu-view" ng-class="{'shrink': _ctrl.menuVisible()}" layout="column" flex>
+            <div ng-view flex layout="column"></div>
         </div>
     </div>
     
@@ -67,5 +70,15 @@
     <script src="./directives/chat-message.directive.js"></script>
     <script src="./services/chat.service.js"></script>
     <!-- endbuild -->
+    
+    <script>
+	    document.addEventListener("keydown", function (e) {
+            if (e.which === 123) {
+                require('remote').getCurrentWindow().toggleDevTools();
+            } else if (e.which === 116) {
+                location.reload();
+            }
+        });
+    </script>
   </body>
 </html>

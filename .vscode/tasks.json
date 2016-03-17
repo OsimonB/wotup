@@ -22,7 +22,7 @@
             "isBuildCommand": false
         },
         {
-            "taskName": "build-electron",
+            "taskName": "package",
             "args": [],
             "isBuildCommand": false
         }

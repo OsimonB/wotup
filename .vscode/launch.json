@@ -4,12 +4,13 @@
 		{
 			"name": "Launch Electron App",
 			"type": "node",
-			"request": "launch",
-			"program": "${workspaceRoot}/app/main.js",
+			"program": "${workspaceRoot}/node_modules/gulp/bin/gulp.js",
 			"stopOnEntry": false,
-			"args": [],
+			"args": [
+                "run"
+            ],
 			"cwd": "${workspaceRoot}",
-			"runtimeExecutable": "${workspaceRoot}/node_modules/electron-prebuilt/dist/electron.exe",
+			"runtimeExecutable": null,
 			"runtimeArgs": [
 				"--nolazy"
 			],

@@ -1,6 +1,6 @@
 /* ------------- Main Window -------------- */
 
-body > div {
+#wu-border {
     border-color: #444;
     border-width: 2px;
     border-style: solid;
@@ -22,11 +22,6 @@ body > div {
 
 #wu-menu.visible {
     height: 32px;
-}
-
-#wu-view {
-    height: 100%;
-    width: 100%;
 }
 
 #wu-view.shrink {
@@ -128,6 +123,10 @@ body > div {
 #wu-input-box {
     margin: 0;
     padding: 0;
+}
+
+#wu-input-box .md-errors-spacer {
+    min-height: 0px;
 }
 
 #wu-input {

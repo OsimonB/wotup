@@ -19,6 +19,6 @@
     "homepage": "https://github.com/OsimonB/wotup",
     "devDependencies": {
         "electron-prebuilt": "^0.37.1",
-        "tmi.js": "^0.0.28"
+        "tmi.js": "^0.0.28"        
     }
 }
