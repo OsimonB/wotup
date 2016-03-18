@@ -1,5 +1,5 @@
 # Project Roadmap
-I work full time and this is a project I've taken on as a favour for [Xisuma](https://www.twitch.tv/xisuma),
+I work full time so I don't have much time to work no this project. It's a project I've taken on as a favour for [Xisuma](https://www.twitch.tv/xisuma),
 so this is really just a list of what features I plan on adding and when I need to add them.
 This is nothing concrete so things are likely to change.
 Releases will also most likely not be released one by one, but in chunks.
@@ -13,7 +13,7 @@ version 0.5 not the in between stages, there is really no need to release every 
 - [x] Design layout using [Angular Material](https://material.angularjs.org/)
 - [x] Integration with [tmi.js](https://www.tmijs.org/)
 
-#### Version 0.2
+#### [Version 0.2](https://github.com/OsimonB/wotup/releases/tag/v0.2)
 - [x] Add user settings page
 - [x] Blacklist messages from defined users
 - [x] Add *"who's live?"* window
