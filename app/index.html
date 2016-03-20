@@ -37,9 +37,9 @@
                 <md-list>
                     <md-list-item ng-repeat="channel in _ctrl.raidList" class="md-3-line md-dense" ng-show="_ctrl.raidVisible()">
                         <div class="md-list-item-text" layout="column">
-                            <h3>{{channel.display_name}} - {{channel.meta_game}}</h3>
+                            <h3>{{channel.name}} - {{channel.game}}</h3>
                             <h4>{{channel.title}}</h4>
-                            <p>{{channel.current_viewers}} viewers</p>
+                            <p>{{channel.viewers}} viewers</p>
                         </div>
                     </md-list-item>
                 </md-list>
@@ -64,6 +64,7 @@
     <script src="./controllers/window.controller.js"></script>
     
     <script src="./controllers/settings.controller.js"></script>
+    <script src="./directives/wu-setting.directive.js"></script>
     <script src="./services/settings.service.js"></script>
     
     <script src="./controllers/chat.controller.js"></script>

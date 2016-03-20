@@ -19,7 +19,7 @@ version 0.5 not the in between stages, there is really no need to release every 
 - [x] Add *"who's live?"* window
 
 #### Version 0.3
-- [ ] Add support for emoticons
+- [x] Add support for emoticons
 - [ ] Create foundation for custom styling
 - [ ] Highlight whispers and mentions
 

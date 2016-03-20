@@ -1,6 +1,6 @@
 <div layout="column" flex>
-    <div scroll-glue layout="column" flex>
-        <md-list class="chat-window" flex layout-fill>
+    <div layout="column" flex>
+        <md-list scroll-glue class="wu-chat-window" flex layout-fill>
             <chat-message ng-repeat="msg in messages" ng-click="selectedUser = msg.user.username" message="msg" selected="selectedUser"></chat-message>
         </md-list>
     </div>

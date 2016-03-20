@@ -46,24 +46,44 @@
         }
         
         self.updateRaidList = function() {
-            var team = settings.get('raid', 'team');
-            
             self.raidList = [];
-            if(team) {
-                http.get('http://api.twitch.tv/api/team/'+team+'/all_channels.json').then(
+            angular.forEach(settings.get('raid', 'teams'), function(team) {
+                http.get('https://api.twitch.tv/api/team/'+team+'/all_channels.json').then(
                     function success(response) {
                         var channels = response.data.channels || [];
                         
                         channels.forEach(function (channel, index) {
                             if(channel.channel.status === "live") {
-                                self.raidList.push(channel.channel);
+                                self.raidList.push({
+                                    name: channel.channel.display_name,
+                                    game: channel.channel.meta_game,
+                                    title: channel.channel.title,
+                                    viewers: channel.channel.current_viewers    
+                                });
                             }
                         });
                     }, function error(response) {
                         
                     }
                 )
-            }
+            });
+            
+            angular.forEach(settings.get('raid', 'users'), function(user) {
+                http.get('https://api.twitch.tv/kraken/streams/'+user).then(
+                    function success(response) {
+                        if(response.data.stream) {
+                            self.raidList.push({
+                                name: response.data.stream.channel.display_name,
+                                game: response.data.stream.game,
+                                title: response.data.stream.channel.status,
+                                viewers: response.data.stream.viewers  
+                            });
+                        }
+                    }, function error(response) {
+                        
+                    }
+                )
+            })
         }
     }
 })();

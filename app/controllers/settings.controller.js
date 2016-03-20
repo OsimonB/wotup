@@ -2,9 +2,9 @@
     'use strict';
     
     angular.module('wotup')
-        .controller('settingsController', ['settingsService', '$scope', '$window', '$location', SettingsController]);
+        .controller('settingsController', ['settingsService', '$scope', '$location', '$mdDialog', '$mdToast', SettingsController]);
         
-    function SettingsController(settings, scope, window, location) {
+    function SettingsController(settings, scope, location, $mdDialog, $mdToast) {
         var self = this;
 
         self.getValues = function() {
@@ -46,6 +46,25 @@
             self.setValues();
             settings.save();
             location.path('/chat');
+        }
+       
+        self.restore = function(ev) {
+            var confirm = $mdDialog.confirm()
+                .title('Restore Default Settings')
+                .textContent('Are you sure you want to restore all the default settings?')
+                .ariaLabel('Restore Default Settings')
+                .targetEvent(ev)
+                .ok('Restore Settings')
+                .cancel('Cancel');
+            $mdDialog.show(confirm).then(function() {
+                scope.values = {};
+                self.setValues();
+                settings.save();
+                $mdToast.show($mdToast.simple().textContent('Default settings restored!'));
+                location.path('/settings');
+            }, function() {
+                //Wise move
+            });
         }
        
         self.cancel = function() {

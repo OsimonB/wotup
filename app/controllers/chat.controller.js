@@ -8,7 +8,7 @@
         var self = this;
         
         self.channel = settings.get("twitch", "channel");
-        self.blacklist = settings.get("chat", "blacklist").split(',');
+        self.blacklist = settings.get("chat", "blacklist");
         self.messageLimit = settings.get("chat", "messagelimit");
         self.selectedUser = "";
         

@@ -5,6 +5,24 @@
         .directive('chatMessage', ['settingsService', ChatMessage]);
         
     function ChatMessage(settings) {
+        var insertEmoticons = function(msg) {
+            if(!msg.user.emotes) return msg.message;
+            var splitText = msg.message.split('');
+            
+            Object.keys(msg.user.emotes).forEach(function(key) {
+                msg.user.emotes[key].forEach(function(mote) {
+                    mote = mote.split('-');
+                    mote = [parseInt(mote[0]), parseInt(mote[1])];
+                    var length =  mote[1] - mote[0],
+                        empty = Array.apply(null, new Array(length + 1)).map(function() { return '' });
+                    splitText = splitText.slice(0, mote[0]).concat(empty).concat(splitText.slice(mote[1] + 1, splitText.length));
+                    splitText.splice(mote[0], 1, '<img class="emoticon" src="http://static-cdn.jtvnw.net/emoticons/v1/' + key + '/3.0">');
+                });
+            });
+            
+            return splitText.join('');
+        };
+        
         return {
             template: 
                 '<md-list-item class="wu-chat-message" ng-click="selectUser()" ng-class="{\'selected\': isSelected(), \'highlighted\': isHighlighted()}">' +
@@ -38,7 +56,10 @@
                 if(user.turbo) tags.append('<img src="./assets/images/badges/turbo.png" />');
                                
                 var message = angular.element(elem[0].querySelector('.message'));
-                message.text(scope.message.message);
+                if(settings.get('appearance', 'emoticons')) {
+                    scope.message.message = insertEmoticons(scope.message);
+                }
+                message.html(scope.message.message);
                 
                 scope.isHighlighted = function () {
                     var tidy = scope.message.message.toLowerCase();

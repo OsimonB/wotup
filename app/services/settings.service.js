@@ -15,8 +15,8 @@
                 settings: {
                     blacklist: {
                         name: 'Blacklisted users',
-                        type: 'text',
-                        default: 'Nightbot,Moobot',
+                        type: 'textlist',
+                        default: ['Nightbot', 'Moobot'],
                         description: 'Users to hide in chat (Comma separated)'
                     },
                     messagelimit: {
@@ -71,12 +71,18 @@
                 icon: 'fa-fort-awesome',
                 description: 'Tune your vessel for prime raiding',
                 settings: {
-                    team: {
-                        name: 'Team',
-                        type: 'text',
-                        default: '',
-                        description: 'Choose the Twitch team to search for online channels'
-                    }
+                    teams: {
+                        name: 'Teams',
+                        type: 'textlist',
+                        default: [],
+                        description: 'Teams to include in the raid list'
+                    },
+                    users: {
+                        name: 'Users',
+                        type: 'textlist',
+                        default: [],
+                        description: 'Individual users to include in the raid list'
+                    },
                 }
             },
             

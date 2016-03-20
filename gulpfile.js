@@ -31,6 +31,7 @@ gulp.task('copy-base', ['clean'], function() {
         matching: [
             './node_modules/**/*',
             '*.html',
+            'assets/**/*',
             'main.js',
             'package.json'
         ]

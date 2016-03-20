@@ -63,6 +63,10 @@
     -webkit-transform: rotate(0deg);
 }
 
+md-input-container .md-errors-spacer {
+    min-height: 0px;
+}
+
 /* ------------- Raid List --------------- */
 
 #wu-raid-list {
@@ -86,6 +90,9 @@
 }
 
 /* ------------- Chat Messages ------------- */
+.wu-chat-window {
+    overflow-y: scroll;
+}
 
 .wu-chat-message {
     min-height: 18px;
@@ -120,13 +127,14 @@
     background-color: #ffc;
 }
 
+.wu-chat-message .emoticon {
+    width: 16px;
+    height: auto;
+}
+
 #wu-input-box {
     margin: 0;
     padding: 0;
-}
-
-#wu-input-box .md-errors-spacer {
-    min-height: 0px;
 }
 
 #wu-input {
@@ -158,4 +166,16 @@
 #wu-settings-icon {
     width: 48px;
     height: 48px;
+}
+
+.wu-setting-text h4 {
+    padding-top: 8px;
+}
+
+.wu-setting-number h4 {
+    padding-top: 8px;
+}
+
+.wu-setting-text-list h4 {
+    padding-top: 15px;    
 }

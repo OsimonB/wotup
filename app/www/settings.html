@@ -9,7 +9,11 @@
                 <div class="md-list-item-text" layout="column">
                     <h3>{{ module.name }}</h3>
                     <p>{{ module.description }}</p>
-                </div>            
+                </div>           
+            </md-list-item>
+            <md-divider></md-divider>
+            <md-list-item>
+                <md-button ng-click="_ctrl.restore()" class="md-raised md-warn" flex>Restore Default Settings</md-button>
             </md-list-item>
         </md-list>
     </div>
@@ -17,11 +21,7 @@
         <h1>{{_ctrl.selected.name}}</h1>
         <md-divider></md-divider>
         <div layout="column" id="wu-settings-list">
-            <md-input-container ng-repeat="(name, setting) in _ctrl.selected.settings" layout="row" flex>
-                <md-tooltip>{{setting.description}}</md-tooltip>
-                <h4>{{setting.name}}</h4>
-                <input type="{{setting.type}}" ng-model="values[name]" aria-label="{{setting.name}}" flex />
-            </md-input-container>
+            <wu-setting ng-model="values[name]" descriptor="setting" ng-repeat="(name, setting) in _ctrl.selected.settings" />
         </div>
         <md-divider></md-divider>
         <div layout="row" id="wu-settings-footer">
